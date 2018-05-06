@@ -16,6 +16,7 @@
 - 题库管理
 - 道具管理
 
+
 ## 3. 数据库ER图设计如下图
 
 ![ER图](./ERD.svg )
@@ -29,7 +30,8 @@
 - sa登录密码项目内默认使用123456
 
 ## 6. 提示
-克隆本地方法
+- 使用的是CodeFirst的开发模式
+- 克隆本地方法
 ```
 git clone https://gitee.com/harry7988/rewriting_the_answer_game_web_site.git
 ```
