@@ -18,10 +18,11 @@ namespace AQWithWebAPI.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int LevelID { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string L_Name { get; set; }
 
-        public int? L_Admit_Min_Score { get; set; }
+        public int L_Admit_Min_Score { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User> User { get; set; }

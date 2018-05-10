@@ -12,11 +12,11 @@ namespace AQWithWebAPI.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
 
-        public int? ToolID { get; set; }
+        public int ToolID { get; set; }
 
-        public int? UserID { get; set; }
+        public int UserID { get; set; }
 
-        public int? ToolsNumber { get; set; }
+        public int ToolsNumber { get; set; }
 
         public virtual AnswerTools AnswerTools { get; set; }
 

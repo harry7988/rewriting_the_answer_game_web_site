@@ -35,11 +35,13 @@ namespace AQWithWebAPI.Models
 
         public int? Max_score { get; set; }
 
-        public int? RloeID { get; set; }
+        public int RloeID { get; set; }
 
+        [Required]
         [StringLength(20)]
         public string IsOnline { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string Add_Date { get; set; }
 

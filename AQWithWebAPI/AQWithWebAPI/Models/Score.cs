@@ -12,17 +12,19 @@ namespace AQWithWebAPI.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ScoreID { get; set; }
 
-        public int? S_Correct { get; set; }
+        public int S_Correct { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string S_Achieve_Date { get; set; }
 
-        public int? S_GroupID { get; set; }
+        public int S_GroupID { get; set; }
 
-        public int? S_UserID { get; set; }
+        public int S_UserID { get; set; }
 
-        public int? S_QID { get; set; }
+        public int S_QID { get; set; }
 
+        [Required]
         [StringLength(20)]
         public string S_Type { get; set; }
 

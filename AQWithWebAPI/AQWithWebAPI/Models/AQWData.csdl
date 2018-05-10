@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AQWData" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="AQWDataEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AnswerTools" EntityType="AQWData.AnswerTool" />
+    <EntitySet Name="IsOnlines" EntityType="AQWData.IsOnline" />
+    <EntitySet Name="Levels" EntityType="AQWData.Level" />
+    <EntitySet Name="LogInfoes" EntityType="AQWData.LogInfo" />
+    <EntitySet Name="Questions" EntityType="AQWData.Question" />
+    <EntitySet Name="Roles" EntityType="AQWData.Role" />
+    <EntitySet Name="S_GroupNumber" EntityType="AQWData.S_GroupNumber" />
+    <EntitySet Name="Scores" EntityType="AQWData.Score" />
+    <EntitySet Name="Score_Type" EntityType="AQWData.Score_Type" />
+    <EntitySet Name="sysdiagrams" EntityType="AQWData.sysdiagram" />
+    <EntitySet Name="Users" EntityType="AQWData.User" />
+    <EntitySet Name="UserHasToolsNumbers" EntityType="AQWData.UserHasToolsNumber" />
+    <AssociationSet Name="FK_UserHasToosNumber_AnswerTools" Association="AQWData.FK_UserHasToosNumber_AnswerTools">
+      <End Role="AnswerTools" EntitySet="AnswerTools" />
+      <End Role="UserHasToolsNumber" EntitySet="UserHasToolsNumbers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_IsOnline" Association="AQWData.FK_User_IsOnline">
+      <End Role="IsOnline" EntitySet="IsOnlines" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Level" Association="AQWData.FK_User_Level">
+      <End Role="Level" EntitySet="Levels" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LogInfo_User" Association="AQWData.FK_LogInfo_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="LogInfo" EntitySet="LogInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Score_Question" Association="AQWData.FK_Score_Question">
+      <End Role="Question" EntitySet="Questions" />
+      <End Role="Score" EntitySet="Scores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Role" Association="AQWData.FK_User_Role">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_S_GroupNumber_User" Association="AQWData.FK_S_GroupNumber_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="S_GroupNumber" EntitySet="S_GroupNumber" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Score_S_GroupNumber" Association="AQWData.FK_Score_S_GroupNumber">
+      <End Role="S_GroupNumber" EntitySet="S_GroupNumber" />
+      <End Role="Score" EntitySet="Scores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Score_Score_Type" Association="AQWData.FK_Score_Score_Type">
+      <End Role="Score_Type" EntitySet="Score_Type" />
+      <End Role="Score" EntitySet="Scores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Score_User" Association="AQWData.FK_Score_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Score" EntitySet="Scores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserHasToosNumber_User" Association="AQWData.FK_UserHasToosNumber_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserHasToolsNumber" EntitySet="UserHasToolsNumbers" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AnswerTool">
+    <Key>
+      <PropertyRef Name="TID" />
+    </Key>
+    <Property Name="TID" Type="Int32" Nullable="false" />
+    <Property Name="T_Name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="T_Desc" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="T_Price" Type="Int32" />
+    <NavigationProperty Name="UserHasToolsNumbers" Relationship="AQWData.FK_UserHasToosNumber_AnswerTools" FromRole="AnswerTools" ToRole="UserHasToolsNumber" />
+  </EntityType>
+  <EntityType Name="IsOnline">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="Desc" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <NavigationProperty Name="Users" Relationship="AQWData.FK_User_IsOnline" FromRole="IsOnline" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Level">
+    <Key>
+      <PropertyRef Name="LevelID" />
+    </Key>
+    <Property Name="LevelID" Type="Int32" Nullable="false" />
+    <Property Name="L_Name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="L_Admit_Min_Score" Type="Int32" />
+    <NavigationProperty Name="Users" Relationship="AQWData.FK_User_Level" FromRole="Level" ToRole="User" />
+  </EntityType>
+  <EntityType Name="LogInfo">
+    <Key>
+      <PropertyRef Name="InfoID" />
+    </Key>
+    <Property Name="InfoID" Type="Int32" Nullable="false" />
+    <Property Name="I_Msg" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="I_Date" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="I_UserID" Type="Int32" />
+    <Property Name="I_Type" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <NavigationProperty Name="User" Relationship="AQWData.FK_LogInfo_User" FromRole="LogInfo" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="QuestionID" />
+    </Key>
+    <Property Name="QuestionID" Type="Int32" Nullable="false" />
+    <Property Name="Q_Content" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Q_Select_A" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Q_Select_B" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Q_Select_C" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Q_Select_D" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Q_Answer" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Q_Add_Date" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Scores" Relationship="AQWData.FK_Score_Question" FromRole="Question" ToRole="Score" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="Int32" Nullable="false" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="RoleDesc" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Users" Relationship="AQWData.FK_User_Role" FromRole="Role" ToRole="User" />
+  </EntityType>
+  <EntityType Name="S_GroupNumber">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="AQWData.FK_S_GroupNumber_User" FromRole="S_GroupNumber" ToRole="User" />
+    <NavigationProperty Name="Scores" Relationship="AQWData.FK_Score_S_GroupNumber" FromRole="S_GroupNumber" ToRole="Score" />
+  </EntityType>
+  <EntityType Name="Score">
+    <Key>
+      <PropertyRef Name="ScoreID" />
+    </Key>
+    <Property Name="ScoreID" Type="Int32" Nullable="false" />
+    <Property Name="S_Correct" Type="Int32" />
+    <Property Name="S_Achieve_Date" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="S_GroupID" Type="Int32" />
+    <Property Name="S_UserID" Type="Int32" />
+    <Property Name="S_QID" Type="Int32" />
+    <Property Name="S_Type" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Question" Relationship="AQWData.FK_Score_Question" FromRole="Score" ToRole="Question" />
+    <NavigationProperty Name="S_GroupNumber" Relationship="AQWData.FK_Score_S_GroupNumber" FromRole="Score" ToRole="S_GroupNumber" />
+    <NavigationProperty Name="Score_Type" Relationship="AQWData.FK_Score_Score_Type" FromRole="Score" ToRole="Score_Type" />
+    <NavigationProperty Name="User" Relationship="AQWData.FK_Score_User" FromRole="Score" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Score_Type">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="Desc" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <NavigationProperty Name="Scores" Relationship="AQWData.FK_Score_Score_Type" FromRole="Score_Type" ToRole="Score" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Passwords" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="LevelID" Type="Int32" Nullable="false" />
+    <Property Name="Max_score" Type="Int32" />
+    <Property Name="RloeID" Type="Int32" />
+    <Property Name="IsOnline" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="Add_Date" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="IsOnline1" Relationship="AQWData.FK_User_IsOnline" FromRole="User" ToRole="IsOnline" />
+    <NavigationProperty Name="Level" Relationship="AQWData.FK_User_Level" FromRole="User" ToRole="Level" />
+    <NavigationProperty Name="LogInfoes" Relationship="AQWData.FK_LogInfo_User" FromRole="User" ToRole="LogInfo" />
+    <NavigationProperty Name="Role" Relationship="AQWData.FK_User_Role" FromRole="User" ToRole="Role" />
+    <NavigationProperty Name="S_GroupNumber" Relationship="AQWData.FK_S_GroupNumber_User" FromRole="User" ToRole="S_GroupNumber" />
+    <NavigationProperty Name="Scores" Relationship="AQWData.FK_Score_User" FromRole="User" ToRole="Score" />
+    <NavigationProperty Name="UserHasToolsNumbers" Relationship="AQWData.FK_UserHasToosNumber_User" FromRole="User" ToRole="UserHasToolsNumber" />
+  </EntityType>
+  <EntityType Name="UserHasToolsNumber">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ToolID" Type="Int32" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="ToolsNumber" Type="Int32" />
+    <NavigationProperty Name="AnswerTool" Relationship="AQWData.FK_UserHasToosNumber_AnswerTools" FromRole="UserHasToolsNumber" ToRole="AnswerTools" />
+    <NavigationProperty Name="User" Relationship="AQWData.FK_UserHasToosNumber_User" FromRole="UserHasToolsNumber" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_UserHasToosNumber_AnswerTools">
+    <End Role="AnswerTools" Type="AQWData.AnswerTool" Multiplicity="0..1" />
+    <End Role="UserHasToolsNumber" Type="AQWData.UserHasToolsNumber" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerTools">
+        <PropertyRef Name="TID" />
+      </Principal>
+      <Dependent Role="UserHasToolsNumber">
+        <PropertyRef Name="ToolID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_IsOnline">
+    <End Role="IsOnline" Type="AQWData.IsOnline" Multiplicity="0..1" />
+    <End Role="User" Type="AQWData.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IsOnline">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="IsOnline" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Level">
+    <End Role="Level" Type="AQWData.Level" Multiplicity="1" />
+    <End Role="User" Type="AQWData.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Level">
+        <PropertyRef Name="LevelID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="LevelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LogInfo_User">
+    <End Role="User" Type="AQWData.User" Multiplicity="0..1" />
+    <End Role="LogInfo" Type="AQWData.LogInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LogInfo">
+        <PropertyRef Name="I_UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Score_Question">
+    <End Role="Question" Type="AQWData.Question" Multiplicity="0..1" />
+    <End Role="Score" Type="AQWData.Score" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="QuestionID" />
+      </Principal>
+      <Dependent Role="Score">
+        <PropertyRef Name="S_QID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Role">
+    <End Role="Role" Type="AQWData.Role" Multiplicity="0..1" />
+    <End Role="User" Type="AQWData.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RloeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_S_GroupNumber_User">
+    <End Role="User" Type="AQWData.User" Multiplicity="1" />
+    <End Role="S_GroupNumber" Type="AQWData.S_GroupNumber" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="S_GroupNumber">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Score_S_GroupNumber">
+    <End Role="S_GroupNumber" Type="AQWData.S_GroupNumber" Multiplicity="0..1" />
+    <End Role="Score" Type="AQWData.Score" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="S_GroupNumber">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Score">
+        <PropertyRef Name="S_GroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Score_Score_Type">
+    <End Role="Score_Type" Type="AQWData.Score_Type" Multiplicity="0..1" />
+    <End Role="Score" Type="AQWData.Score" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Score_Type">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Score">
+        <PropertyRef Name="S_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Score_User">
+    <End Role="User" Type="AQWData.User" Multiplicity="0..1" />
+    <End Role="Score" Type="AQWData.Score" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Score">
+        <PropertyRef Name="S_UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserHasToosNumber_User">
+    <End Role="User" Type="AQWData.User" Multiplicity="0..1" />
+    <End Role="UserHasToolsNumber" Type="AQWData.UserHasToolsNumber" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserHasToolsNumber">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

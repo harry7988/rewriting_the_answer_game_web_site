@@ -1,0 +1,338 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AQWData.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="AQWDataStoreContainer">
+    <EntitySet Name="AnswerTools" EntityType="AQWData.Store.AnswerTools" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="IsOnline" EntityType="AQWData.Store.IsOnline" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Level" EntityType="AQWData.Store.Level" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LogInfo" EntityType="AQWData.Store.LogInfo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Question" EntityType="AQWData.Store.Question" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Role" EntityType="AQWData.Store.Role" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="S_GroupNumber" EntityType="AQWData.Store.S_GroupNumber" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Score" EntityType="AQWData.Store.Score" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Score_Type" EntityType="AQWData.Store.Score_Type" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="AQWData.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="User" EntityType="AQWData.Store.User" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserHasToolsNumber" EntityType="AQWData.Store.UserHasToolsNumber" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_LogInfo_User" Association="AQWData.Store.FK_LogInfo_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="LogInfo" EntitySet="LogInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_S_GroupNumber_User" Association="AQWData.Store.FK_S_GroupNumber_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="S_GroupNumber" EntitySet="S_GroupNumber" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Score_Question" Association="AQWData.Store.FK_Score_Question">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="Score" EntitySet="Score" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Score_S_GroupNumber" Association="AQWData.Store.FK_Score_S_GroupNumber">
+      <End Role="S_GroupNumber" EntitySet="S_GroupNumber" />
+      <End Role="Score" EntitySet="Score" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Score_Score_Type" Association="AQWData.Store.FK_Score_Score_Type">
+      <End Role="Score_Type" EntitySet="Score_Type" />
+      <End Role="Score" EntitySet="Score" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Score_User" Association="AQWData.Store.FK_Score_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Score" EntitySet="Score" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_IsOnline" Association="AQWData.Store.FK_User_IsOnline">
+      <End Role="IsOnline" EntitySet="IsOnline" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Level" Association="AQWData.Store.FK_User_Level">
+      <End Role="Level" EntitySet="Level" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Role" Association="AQWData.Store.FK_User_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserHasToosNumber_AnswerTools" Association="AQWData.Store.FK_UserHasToosNumber_AnswerTools">
+      <End Role="AnswerTools" EntitySet="AnswerTools" />
+      <End Role="UserHasToolsNumber" EntitySet="UserHasToolsNumber" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserHasToosNumber_User" Association="AQWData.Store.FK_UserHasToosNumber_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserHasToolsNumber" EntitySet="UserHasToolsNumber" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AnswerTools">
+    <Key>
+      <PropertyRef Name="TID" />
+    </Key>
+    <Property Name="TID" Type="int" Nullable="false" />
+    <Property Name="T_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="T_Desc" Type="nvarchar(max)" />
+    <Property Name="T_Price" Type="int" />
+  </EntityType>
+  <EntityType Name="IsOnline">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Desc" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Level">
+    <Key>
+      <PropertyRef Name="LevelID" />
+    </Key>
+    <Property Name="LevelID" Type="int" Nullable="false" />
+    <Property Name="L_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="L_Admit_Min_Score" Type="int" />
+  </EntityType>
+  <EntityType Name="LogInfo">
+    <Key>
+      <PropertyRef Name="InfoID" />
+    </Key>
+    <Property Name="InfoID" Type="int" Nullable="false" />
+    <Property Name="I_Msg" Type="nchar" MaxLength="10" />
+    <Property Name="I_Date" Type="nchar" MaxLength="10" />
+    <Property Name="I_UserID" Type="int" />
+    <Property Name="I_Type" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="QuestionID" />
+    </Key>
+    <Property Name="QuestionID" Type="int" Nullable="false" />
+    <Property Name="Q_Content" Type="nvarchar(max)" />
+    <Property Name="Q_Select_A" Type="nvarchar(max)" />
+    <Property Name="Q_Select_B" Type="nvarchar(max)" />
+    <Property Name="Q_Select_C" Type="nvarchar(max)" />
+    <Property Name="Q_Select_D" Type="nvarchar(max)" />
+    <Property Name="Q_Answer" Type="nvarchar(max)" />
+    <Property Name="Q_Add_Date" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="int" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="RoleDesc" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="S_GroupNumber">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Score">
+    <Key>
+      <PropertyRef Name="ScoreID" />
+    </Key>
+    <Property Name="ScoreID" Type="int" Nullable="false" />
+    <Property Name="S_Correct" Type="int" />
+    <Property Name="S_Achieve_Date" Type="nvarchar" MaxLength="50" />
+    <Property Name="S_GroupID" Type="int" />
+    <Property Name="S_UserID" Type="int" />
+    <Property Name="S_QID" Type="int" />
+    <Property Name="S_Type" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Score_Type">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Desc" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Passwords" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="LevelID" Type="int" Nullable="false" />
+    <Property Name="Max_score" Type="int" />
+    <Property Name="RloeID" Type="int" />
+    <Property Name="IsOnline" Type="nvarchar" MaxLength="20" />
+    <Property Name="Add_Date" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="UserHasToolsNumber">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ToolID" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="ToolsNumber" Type="int" />
+  </EntityType>
+  <Association Name="FK_LogInfo_User">
+    <End Role="User" Type="AQWData.Store.User" Multiplicity="0..1" />
+    <End Role="LogInfo" Type="AQWData.Store.LogInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LogInfo">
+        <PropertyRef Name="I_UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_S_GroupNumber_User">
+    <End Role="User" Type="AQWData.Store.User" Multiplicity="1" />
+    <End Role="S_GroupNumber" Type="AQWData.Store.S_GroupNumber" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="S_GroupNumber">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Score_Question">
+    <End Role="Question" Type="AQWData.Store.Question" Multiplicity="0..1" />
+    <End Role="Score" Type="AQWData.Store.Score" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="QuestionID" />
+      </Principal>
+      <Dependent Role="Score">
+        <PropertyRef Name="S_QID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Score_S_GroupNumber">
+    <End Role="S_GroupNumber" Type="AQWData.Store.S_GroupNumber" Multiplicity="0..1" />
+    <End Role="Score" Type="AQWData.Store.Score" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="S_GroupNumber">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Score">
+        <PropertyRef Name="S_GroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Score_Score_Type">
+    <End Role="Score_Type" Type="AQWData.Store.Score_Type" Multiplicity="0..1" />
+    <End Role="Score" Type="AQWData.Store.Score" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Score_Type">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Score">
+        <PropertyRef Name="S_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Score_User">
+    <End Role="User" Type="AQWData.Store.User" Multiplicity="0..1" />
+    <End Role="Score" Type="AQWData.Store.Score" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Score">
+        <PropertyRef Name="S_UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_IsOnline">
+    <End Role="IsOnline" Type="AQWData.Store.IsOnline" Multiplicity="0..1" />
+    <End Role="User" Type="AQWData.Store.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IsOnline">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="IsOnline" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Level">
+    <End Role="Level" Type="AQWData.Store.Level" Multiplicity="1" />
+    <End Role="User" Type="AQWData.Store.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Level">
+        <PropertyRef Name="LevelID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="LevelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Role">
+    <End Role="Role" Type="AQWData.Store.Role" Multiplicity="0..1" />
+    <End Role="User" Type="AQWData.Store.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RloeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserHasToosNumber_AnswerTools">
+    <End Role="AnswerTools" Type="AQWData.Store.AnswerTools" Multiplicity="0..1" />
+    <End Role="UserHasToolsNumber" Type="AQWData.Store.UserHasToolsNumber" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerTools">
+        <PropertyRef Name="TID" />
+      </Principal>
+      <Dependent Role="UserHasToolsNumber">
+        <PropertyRef Name="ToolID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserHasToosNumber_User">
+    <End Role="User" Type="AQWData.Store.User" Multiplicity="0..1" />
+    <End Role="UserHasToolsNumber" Type="AQWData.Store.UserHasToolsNumber" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserHasToolsNumber">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+</Schema>

@@ -100,7 +100,6 @@ D:\项目重写\AQWithWebAPI\AQWithWebAPI\bin\zh-Hans\System.Web.WebPages.Razor.
 D:\项目重写\AQWithWebAPI\AQWithWebAPI\bin\zh-Hans\System.Net.Http.Formatting.resources.dll
 D:\项目重写\AQWithWebAPI\AQWithWebAPI\bin\zh-Hans\System.Web.Http.resources.dll
 D:\项目重写\AQWithWebAPI\AQWithWebAPI\bin\zh-Hans\System.Web.Http.WebHost.resources.dll
-D:\项目重写\AQWithWebAPI\AQWithWebAPI\obj\Debug\AQWithWebAPI.csprojResolveAssemblyReference.cache
 D:\项目重写\AQWithWebAPI\AQWithWebAPI\obj\Debug\AQWithWebAPI.csproj.CoreCompileInputs.cache
 D:\项目重写\AQWithWebAPI\AQWithWebAPI\obj\Debug\AQWithWebAPI.csproj.CopyComplete
 D:\项目重写\AQWithWebAPI\AQWithWebAPI\obj\Debug\AQWithWebAPI.dll
@@ -110,3 +109,5 @@ D:\项目重写\AQWithWebAPI\AQWithWebAPI\bin\EntityFramework.SqlServer.dll
 D:\项目重写\AQWithWebAPI\AQWithWebAPI\bin\EntityFramework.xml
 D:\项目重写\AQWithWebAPI\AQWithWebAPI\bin\EntityFramework.SqlServer.xml
 D:\项目重写\AQWithWebAPI\AQWithWebAPI\bin\zh-Hans\EntityFramework.resources.dll
+D:\项目重写\AQWithWebAPI\AQWithWebAPI\obj\Debug\AQWithWebAPI.csprojAssemblyReference.cache
+D:\项目重写\AQWithWebAPI\AQWithWebAPI\bin\zh-Hans\EntityFramework.SqlServer.resources.dll

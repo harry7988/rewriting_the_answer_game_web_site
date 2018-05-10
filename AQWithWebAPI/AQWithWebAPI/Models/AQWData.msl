@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AQWDataStoreContainer" CdmEntityContainer="AQWDataEntities">
+    <EntitySetMapping Name="AnswerTools">
+      <EntityTypeMapping TypeName="AQWData.AnswerTool">
+        <MappingFragment StoreEntitySet="AnswerTools">
+          <ScalarProperty Name="TID" ColumnName="TID" />
+          <ScalarProperty Name="T_Name" ColumnName="T_Name" />
+          <ScalarProperty Name="T_Desc" ColumnName="T_Desc" />
+          <ScalarProperty Name="T_Price" ColumnName="T_Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IsOnlines">
+      <EntityTypeMapping TypeName="AQWData.IsOnline">
+        <MappingFragment StoreEntitySet="IsOnline">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Levels">
+      <EntityTypeMapping TypeName="AQWData.Level">
+        <MappingFragment StoreEntitySet="Level">
+          <ScalarProperty Name="LevelID" ColumnName="LevelID" />
+          <ScalarProperty Name="L_Name" ColumnName="L_Name" />
+          <ScalarProperty Name="L_Admit_Min_Score" ColumnName="L_Admit_Min_Score" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LogInfoes">
+      <EntityTypeMapping TypeName="AQWData.LogInfo">
+        <MappingFragment StoreEntitySet="LogInfo">
+          <ScalarProperty Name="InfoID" ColumnName="InfoID" />
+          <ScalarProperty Name="I_Msg" ColumnName="I_Msg" />
+          <ScalarProperty Name="I_Date" ColumnName="I_Date" />
+          <ScalarProperty Name="I_UserID" ColumnName="I_UserID" />
+          <ScalarProperty Name="I_Type" ColumnName="I_Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Questions">
+      <EntityTypeMapping TypeName="AQWData.Question">
+        <MappingFragment StoreEntitySet="Question">
+          <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+          <ScalarProperty Name="Q_Content" ColumnName="Q_Content" />
+          <ScalarProperty Name="Q_Select_A" ColumnName="Q_Select_A" />
+          <ScalarProperty Name="Q_Select_B" ColumnName="Q_Select_B" />
+          <ScalarProperty Name="Q_Select_C" ColumnName="Q_Select_C" />
+          <ScalarProperty Name="Q_Select_D" ColumnName="Q_Select_D" />
+          <ScalarProperty Name="Q_Answer" ColumnName="Q_Answer" />
+          <ScalarProperty Name="Q_Add_Date" ColumnName="Q_Add_Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="AQWData.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="RoleDesc" ColumnName="RoleDesc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="S_GroupNumber">
+      <EntityTypeMapping TypeName="AQWData.S_GroupNumber">
+        <MappingFragment StoreEntitySet="S_GroupNumber">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Scores">
+      <EntityTypeMapping TypeName="AQWData.Score">
+        <MappingFragment StoreEntitySet="Score">
+          <ScalarProperty Name="ScoreID" ColumnName="ScoreID" />
+          <ScalarProperty Name="S_Correct" ColumnName="S_Correct" />
+          <ScalarProperty Name="S_Achieve_Date" ColumnName="S_Achieve_Date" />
+          <ScalarProperty Name="S_GroupID" ColumnName="S_GroupID" />
+          <ScalarProperty Name="S_UserID" ColumnName="S_UserID" />
+          <ScalarProperty Name="S_QID" ColumnName="S_QID" />
+          <ScalarProperty Name="S_Type" ColumnName="S_Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Score_Type">
+      <EntityTypeMapping TypeName="AQWData.Score_Type">
+        <MappingFragment StoreEntitySet="Score_Type">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="AQWData.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="AQWData.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Passwords" ColumnName="Passwords" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="LevelID" ColumnName="LevelID" />
+          <ScalarProperty Name="Max_score" ColumnName="Max_score" />
+          <ScalarProperty Name="RloeID" ColumnName="RloeID" />
+          <ScalarProperty Name="IsOnline" ColumnName="IsOnline" />
+          <ScalarProperty Name="Add_Date" ColumnName="Add_Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserHasToolsNumbers">
+      <EntityTypeMapping TypeName="AQWData.UserHasToolsNumber">
+        <MappingFragment StoreEntitySet="UserHasToolsNumber">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ToolID" ColumnName="ToolID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ToolsNumber" ColumnName="ToolsNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

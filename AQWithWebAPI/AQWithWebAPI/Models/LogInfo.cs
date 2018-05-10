@@ -13,14 +13,17 @@ namespace AQWithWebAPI.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int InfoID { get; set; }
 
+        [Required]
         [StringLength(10)]
         public string I_Msg { get; set; }
 
+        [Required]
         [StringLength(10)]
         public string I_Date { get; set; }
 
-        public int? I_UserID { get; set; }
+        public int I_UserID { get; set; }
 
+        [Required]
         [StringLength(10)]
         public string I_Type { get; set; }
 

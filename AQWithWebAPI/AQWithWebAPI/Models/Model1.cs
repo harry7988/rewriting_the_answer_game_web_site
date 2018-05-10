@@ -8,7 +8,7 @@ namespace AQWithWebAPI.Models
     public partial class Model1 : DbContext
     {
         public Model1()
-            : base("name=Model11")
+            : base("name=Model1")
         {
         }
 
@@ -29,8 +29,9 @@ namespace AQWithWebAPI.Models
         {
             modelBuilder.Entity<AnswerTools>()
                 .HasMany(e => e.UserHasToolsNumber)
-                .WithOptional(e => e.AnswerTools)
-                .HasForeignKey(e => e.ToolID);
+                .WithRequired(e => e.AnswerTools)
+                .HasForeignKey(e => e.ToolID)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<IsOnline>()
                 .Property(e => e.Desc)
@@ -38,8 +39,9 @@ namespace AQWithWebAPI.Models
 
             modelBuilder.Entity<IsOnline>()
                 .HasMany(e => e.User)
-                .WithOptional(e => e.IsOnline1)
-                .HasForeignKey(e => e.IsOnline);
+                .WithRequired(e => e.IsOnline1)
+                .HasForeignKey(e => e.IsOnline)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Level>()
                 .HasMany(e => e.User)
@@ -60,18 +62,21 @@ namespace AQWithWebAPI.Models
 
             modelBuilder.Entity<Question>()
                 .HasMany(e => e.Score)
-                .WithOptional(e => e.Question)
-                .HasForeignKey(e => e.S_QID);
+                .WithRequired(e => e.Question)
+                .HasForeignKey(e => e.S_QID)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Role>()
                 .HasMany(e => e.User)
-                .WithOptional(e => e.Role)
-                .HasForeignKey(e => e.RloeID);
+                .WithRequired(e => e.Role)
+                .HasForeignKey(e => e.RloeID)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<S_GroupNumber>()
                 .HasMany(e => e.Score)
-                .WithOptional(e => e.S_GroupNumber)
-                .HasForeignKey(e => e.S_GroupID);
+                .WithRequired(e => e.S_GroupNumber)
+                .HasForeignKey(e => e.S_GroupID)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Score_Type>()
                 .Property(e => e.Desc)
@@ -79,13 +84,15 @@ namespace AQWithWebAPI.Models
 
             modelBuilder.Entity<Score_Type>()
                 .HasMany(e => e.Score)
-                .WithOptional(e => e.Score_Type)
-                .HasForeignKey(e => e.S_Type);
+                .WithRequired(e => e.Score_Type)
+                .HasForeignKey(e => e.S_Type)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<User>()
                 .HasMany(e => e.LogInfo)
-                .WithOptional(e => e.User)
-                .HasForeignKey(e => e.I_UserID);
+                .WithRequired(e => e.User)
+                .HasForeignKey(e => e.I_UserID)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<User>()
                 .HasMany(e => e.S_GroupNumber)
@@ -94,8 +101,14 @@ namespace AQWithWebAPI.Models
 
             modelBuilder.Entity<User>()
                 .HasMany(e => e.Score)
-                .WithOptional(e => e.User)
-                .HasForeignKey(e => e.S_UserID);
+                .WithRequired(e => e.User)
+                .HasForeignKey(e => e.S_UserID)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<User>()
+                .HasMany(e => e.UserHasToolsNumber)
+                .WithRequired(e => e.User)
+                .WillCascadeOnDelete(false);
         }
     }
 }

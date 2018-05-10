@@ -28,6 +28,7 @@ namespace AQWithWebAPI.Models
 
         public string Q_Select_D { get; set; }
 
+        [Required]
         public string Q_Answer { get; set; }
 
         [StringLength(50)]
