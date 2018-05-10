@@ -9,7 +9,6 @@ namespace AQWithWebAPI.Models
     [Table("UserHasToolsNumber")]
     public partial class UserHasToolsNumber
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
 
         public int ToolID { get; set; }

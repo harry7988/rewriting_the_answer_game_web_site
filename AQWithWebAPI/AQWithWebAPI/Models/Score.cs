@@ -9,7 +9,6 @@ namespace AQWithWebAPI.Models
     [Table("Score")]
     public partial class Score
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ScoreID { get; set; }
 
         public int S_Correct { get; set; }

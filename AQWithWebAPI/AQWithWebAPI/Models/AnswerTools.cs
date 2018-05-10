@@ -15,7 +15,6 @@ namespace AQWithWebAPI.Models
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int TID { get; set; }
 
         [Required]

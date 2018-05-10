@@ -10,7 +10,6 @@ namespace AQWithWebAPI.Models
     public partial class LogInfo
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int InfoID { get; set; }
 
         [Required]

@@ -15,7 +15,6 @@ namespace AQWithWebAPI.Models
             Score = new HashSet<Score>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int QuestionID { get; set; }
 
         public string Q_Content { get; set; }

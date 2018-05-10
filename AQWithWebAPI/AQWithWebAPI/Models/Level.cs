@@ -15,7 +15,6 @@ namespace AQWithWebAPI.Models
             User = new HashSet<User>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int LevelID { get; set; }
 
         [Required]
