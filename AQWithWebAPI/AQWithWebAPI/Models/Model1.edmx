@@ -1,0 +1,801 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AQWDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AnswerTools">
+          <Key>
+            <PropertyRef Name="TID" />
+          </Key>
+          <Property Name="TID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="T_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="T_Desc" Type="nvarchar(max)" />
+          <Property Name="T_Price" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IsOnline">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Desc" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Level">
+          <Key>
+            <PropertyRef Name="LevelID" />
+          </Key>
+          <Property Name="LevelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="L_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="L_Admit_Min_Score" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LogInfo">
+          <Key>
+            <PropertyRef Name="InfoID" />
+          </Key>
+          <Property Name="InfoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="I_Msg" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="I_Date" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="I_UserID" Type="int" Nullable="false" />
+          <Property Name="I_Type" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="QuestionID" />
+          </Key>
+          <Property Name="QuestionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Q_Content" Type="nvarchar(max)" />
+          <Property Name="Q_Select_A" Type="nvarchar(max)" />
+          <Property Name="Q_Select_B" Type="nvarchar(max)" />
+          <Property Name="Q_Select_C" Type="nvarchar(max)" />
+          <Property Name="Q_Select_D" Type="nvarchar(max)" />
+          <Property Name="Q_Answer" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Q_Add_Date" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RoleDesc" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="S_GroupNumber">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Score">
+          <Key>
+            <PropertyRef Name="ScoreID" />
+          </Key>
+          <Property Name="ScoreID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="S_Correct" Type="int" Nullable="false" />
+          <Property Name="S_Achieve_Date" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="S_GroupID" Type="int" Nullable="false" />
+          <Property Name="S_UserID" Type="int" Nullable="false" />
+          <Property Name="S_QID" Type="int" Nullable="false" />
+          <Property Name="S_Type" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Score_Type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Desc" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserNameHash" Type="nvarchar" MaxLength="50" />
+          <Property Name="Passwords" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="LevelID" Type="int" Nullable="false" />
+          <Property Name="Max_score" Type="int" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="IsOnline" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Add_Date" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserHasToolsNumber">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ToolID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="ToolsNumber" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_LogInfo_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="LogInfo" Type="Self.LogInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LogInfo">
+              <PropertyRef Name="I_UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_S_GroupNumber_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="S_GroupNumber" Type="Self.S_GroupNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="S_GroupNumber">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Score_Question">
+          <End Role="Question" Type="Self.Question" Multiplicity="1" />
+          <End Role="Score" Type="Self.Score" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="QuestionID" />
+            </Principal>
+            <Dependent Role="Score">
+              <PropertyRef Name="S_QID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Score_S_GroupNumber">
+          <End Role="S_GroupNumber" Type="Self.S_GroupNumber" Multiplicity="1" />
+          <End Role="Score" Type="Self.Score" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="S_GroupNumber">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Score">
+              <PropertyRef Name="S_GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Score_Score_Type">
+          <End Role="Score_Type" Type="Self.Score_Type" Multiplicity="1" />
+          <End Role="Score" Type="Self.Score" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Score_Type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Score">
+              <PropertyRef Name="S_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Score_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Score" Type="Self.Score" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Score">
+              <PropertyRef Name="S_UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_IsOnline">
+          <End Role="IsOnline" Type="Self.IsOnline" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IsOnline">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IsOnline" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Level">
+          <End Role="Level" Type="Self.Level" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Level">
+              <PropertyRef Name="LevelID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="LevelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserHasToosNumber_AnswerTools">
+          <End Role="AnswerTools" Type="Self.AnswerTools" Multiplicity="1" />
+          <End Role="UserHasToolsNumber" Type="Self.UserHasToolsNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerTools">
+              <PropertyRef Name="TID" />
+            </Principal>
+            <Dependent Role="UserHasToolsNumber">
+              <PropertyRef Name="ToolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserHasToosNumber_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserHasToolsNumber" Type="Self.UserHasToolsNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserHasToolsNumber">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AQWDataModelStoreContainer">
+          <EntitySet Name="AnswerTools" EntityType="Self.AnswerTools" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IsOnline" EntityType="Self.IsOnline" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Level" EntityType="Self.Level" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogInfo" EntityType="Self.LogInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_GroupNumber" EntityType="Self.S_GroupNumber" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Score" EntityType="Self.Score" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Score_Type" EntityType="Self.Score_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserHasToolsNumber" EntityType="Self.UserHasToolsNumber" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_LogInfo_User" Association="Self.FK_LogInfo_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="LogInfo" EntitySet="LogInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_S_GroupNumber_User" Association="Self.FK_S_GroupNumber_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="S_GroupNumber" EntitySet="S_GroupNumber" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Score_Question" Association="Self.FK_Score_Question">
+            <End Role="Question" EntitySet="Question" />
+            <End Role="Score" EntitySet="Score" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Score_S_GroupNumber" Association="Self.FK_Score_S_GroupNumber">
+            <End Role="S_GroupNumber" EntitySet="S_GroupNumber" />
+            <End Role="Score" EntitySet="Score" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Score_Score_Type" Association="Self.FK_Score_Score_Type">
+            <End Role="Score_Type" EntitySet="Score_Type" />
+            <End Role="Score" EntitySet="Score" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Score_User" Association="Self.FK_Score_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Score" EntitySet="Score" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_IsOnline" Association="Self.FK_User_IsOnline">
+            <End Role="IsOnline" EntitySet="IsOnline" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Level" Association="Self.FK_User_Level">
+            <End Role="Level" EntitySet="Level" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserHasToosNumber_AnswerTools" Association="Self.FK_UserHasToosNumber_AnswerTools">
+            <End Role="AnswerTools" EntitySet="AnswerTools" />
+            <End Role="UserHasToolsNumber" EntitySet="UserHasToolsNumber" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserHasToosNumber_User" Association="Self.FK_UserHasToosNumber_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserHasToolsNumber" EntitySet="UserHasToolsNumber" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AQWDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AnswerTools">
+          <Key>
+            <PropertyRef Name="TID" />
+          </Key>
+          <Property Name="TID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="T_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="T_Desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="T_Price" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="UserHasToolsNumber" Relationship="Self.FK_UserHasToosNumber_AnswerTools" FromRole="AnswerTools" ToRole="UserHasToolsNumber" />
+        </EntityType>
+        <EntityType Name="IsOnline">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Desc" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_IsOnline" FromRole="IsOnline" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Level">
+          <Key>
+            <PropertyRef Name="LevelID" />
+          </Key>
+          <Property Name="LevelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="L_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="L_Admit_Min_Score" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Level" FromRole="Level" ToRole="User" />
+        </EntityType>
+        <EntityType Name="LogInfo">
+          <Key>
+            <PropertyRef Name="InfoID" />
+          </Key>
+          <Property Name="InfoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="I_Msg" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="I_Date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="I_UserID" Type="Int32" Nullable="false" />
+          <Property Name="I_Type" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_LogInfo_User" FromRole="LogInfo" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="QuestionID" />
+          </Key>
+          <Property Name="QuestionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Q_Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Q_Select_A" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Q_Select_B" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Q_Select_C" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Q_Select_D" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Q_Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Q_Add_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Score" Relationship="Self.FK_Score_Question" FromRole="Question" ToRole="Score" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="S_GroupNumber">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_S_GroupNumber_User" FromRole="S_GroupNumber" ToRole="User" />
+          <NavigationProperty Name="Score" Relationship="Self.FK_Score_S_GroupNumber" FromRole="S_GroupNumber" ToRole="Score" />
+        </EntityType>
+        <EntityType Name="Score">
+          <Key>
+            <PropertyRef Name="ScoreID" />
+          </Key>
+          <Property Name="ScoreID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="S_Correct" Type="Int32" Nullable="false" />
+          <Property Name="S_Achieve_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="S_GroupID" Type="Int32" Nullable="false" />
+          <Property Name="S_UserID" Type="Int32" Nullable="false" />
+          <Property Name="S_QID" Type="Int32" Nullable="false" />
+          <Property Name="S_Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Question" Relationship="Self.FK_Score_Question" FromRole="Score" ToRole="Question" />
+          <NavigationProperty Name="S_GroupNumber" Relationship="Self.FK_Score_S_GroupNumber" FromRole="Score" ToRole="S_GroupNumber" />
+          <NavigationProperty Name="Score_Type" Relationship="Self.FK_Score_Score_Type" FromRole="Score" ToRole="Score_Type" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Score_User" FromRole="Score" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Score_Type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Desc" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Score" Relationship="Self.FK_Score_Score_Type" FromRole="Score_Type" ToRole="Score" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserNameHash" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Passwords" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LevelID" Type="Int32" Nullable="false" />
+          <Property Name="Max_score" Type="Int32" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="IsOnline" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Add_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="IsOnline1" Relationship="Self.FK_User_IsOnline" FromRole="User" ToRole="IsOnline" />
+          <NavigationProperty Name="Level" Relationship="Self.FK_User_Level" FromRole="User" ToRole="Level" />
+          <NavigationProperty Name="LogInfo" Relationship="Self.FK_LogInfo_User" FromRole="User" ToRole="LogInfo" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="S_GroupNumber" Relationship="Self.FK_S_GroupNumber_User" FromRole="User" ToRole="S_GroupNumber" />
+          <NavigationProperty Name="Score" Relationship="Self.FK_Score_User" FromRole="User" ToRole="Score" />
+          <NavigationProperty Name="UserHasToolsNumber" Relationship="Self.FK_UserHasToosNumber_User" FromRole="User" ToRole="UserHasToolsNumber" />
+        </EntityType>
+        <EntityType Name="UserHasToolsNumber">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ToolID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="ToolsNumber" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AnswerTools" Relationship="Self.FK_UserHasToosNumber_AnswerTools" FromRole="UserHasToolsNumber" ToRole="AnswerTools" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserHasToosNumber_User" FromRole="UserHasToolsNumber" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_UserHasToosNumber_AnswerTools">
+          <End Role="AnswerTools" Type="Self.AnswerTools" Multiplicity="1" />
+          <End Role="UserHasToolsNumber" Type="Self.UserHasToolsNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerTools">
+              <PropertyRef Name="TID" />
+            </Principal>
+            <Dependent Role="UserHasToolsNumber">
+              <PropertyRef Name="ToolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_IsOnline">
+          <End Role="IsOnline" Type="Self.IsOnline" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IsOnline">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IsOnline" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Level">
+          <End Role="Level" Type="Self.Level" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Level">
+              <PropertyRef Name="LevelID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="LevelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogInfo_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="LogInfo" Type="Self.LogInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LogInfo">
+              <PropertyRef Name="I_UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Score_Question">
+          <End Role="Question" Type="Self.Question" Multiplicity="1" />
+          <End Role="Score" Type="Self.Score" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="QuestionID" />
+            </Principal>
+            <Dependent Role="Score">
+              <PropertyRef Name="S_QID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_S_GroupNumber_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="S_GroupNumber" Type="Self.S_GroupNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="S_GroupNumber">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Score_S_GroupNumber">
+          <End Role="S_GroupNumber" Type="Self.S_GroupNumber" Multiplicity="1" />
+          <End Role="Score" Type="Self.Score" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="S_GroupNumber">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Score">
+              <PropertyRef Name="S_GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Score_Score_Type">
+          <End Role="Score_Type" Type="Self.Score_Type" Multiplicity="1" />
+          <End Role="Score" Type="Self.Score" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Score_Type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Score">
+              <PropertyRef Name="S_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Score_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Score" Type="Self.Score" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Score">
+              <PropertyRef Name="S_UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserHasToosNumber_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserHasToolsNumber" Type="Self.UserHasToolsNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserHasToolsNumber">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AQWDataEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AnswerTools" EntityType="Self.AnswerTools" />
+          <EntitySet Name="IsOnline" EntityType="Self.IsOnline" />
+          <EntitySet Name="Level" EntityType="Self.Level" />
+          <EntitySet Name="LogInfo" EntityType="Self.LogInfo" />
+          <EntitySet Name="Question" EntityType="Self.Question" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="S_GroupNumber" EntityType="Self.S_GroupNumber" />
+          <EntitySet Name="Score" EntityType="Self.Score" />
+          <EntitySet Name="Score_Type" EntityType="Self.Score_Type" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <EntitySet Name="UserHasToolsNumber" EntityType="Self.UserHasToolsNumber" />
+          <AssociationSet Name="FK_UserHasToosNumber_AnswerTools" Association="Self.FK_UserHasToosNumber_AnswerTools">
+            <End Role="AnswerTools" EntitySet="AnswerTools" />
+            <End Role="UserHasToolsNumber" EntitySet="UserHasToolsNumber" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_IsOnline" Association="Self.FK_User_IsOnline">
+            <End Role="IsOnline" EntitySet="IsOnline" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Level" Association="Self.FK_User_Level">
+            <End Role="Level" EntitySet="Level" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogInfo_User" Association="Self.FK_LogInfo_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="LogInfo" EntitySet="LogInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Score_Question" Association="Self.FK_Score_Question">
+            <End Role="Question" EntitySet="Question" />
+            <End Role="Score" EntitySet="Score" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_S_GroupNumber_User" Association="Self.FK_S_GroupNumber_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="S_GroupNumber" EntitySet="S_GroupNumber" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Score_S_GroupNumber" Association="Self.FK_Score_S_GroupNumber">
+            <End Role="S_GroupNumber" EntitySet="S_GroupNumber" />
+            <End Role="Score" EntitySet="Score" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Score_Score_Type" Association="Self.FK_Score_Score_Type">
+            <End Role="Score_Type" EntitySet="Score_Type" />
+            <End Role="Score" EntitySet="Score" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Score_User" Association="Self.FK_Score_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Score" EntitySet="Score" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserHasToosNumber_User" Association="Self.FK_UserHasToosNumber_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserHasToolsNumber" EntitySet="UserHasToolsNumber" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AQWDataModelStoreContainer" CdmEntityContainer="AQWDataEntities">
+          <EntitySetMapping Name="AnswerTools">
+            <EntityTypeMapping TypeName="AQWDataModel.AnswerTools">
+              <MappingFragment StoreEntitySet="AnswerTools">
+                <ScalarProperty Name="TID" ColumnName="TID" />
+                <ScalarProperty Name="T_Name" ColumnName="T_Name" />
+                <ScalarProperty Name="T_Desc" ColumnName="T_Desc" />
+                <ScalarProperty Name="T_Price" ColumnName="T_Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IsOnline">
+            <EntityTypeMapping TypeName="AQWDataModel.IsOnline">
+              <MappingFragment StoreEntitySet="IsOnline">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Desc" ColumnName="Desc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Level">
+            <EntityTypeMapping TypeName="AQWDataModel.Level">
+              <MappingFragment StoreEntitySet="Level">
+                <ScalarProperty Name="LevelID" ColumnName="LevelID" />
+                <ScalarProperty Name="L_Name" ColumnName="L_Name" />
+                <ScalarProperty Name="L_Admit_Min_Score" ColumnName="L_Admit_Min_Score" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogInfo">
+            <EntityTypeMapping TypeName="AQWDataModel.LogInfo">
+              <MappingFragment StoreEntitySet="LogInfo">
+                <ScalarProperty Name="InfoID" ColumnName="InfoID" />
+                <ScalarProperty Name="I_Msg" ColumnName="I_Msg" />
+                <ScalarProperty Name="I_Date" ColumnName="I_Date" />
+                <ScalarProperty Name="I_UserID" ColumnName="I_UserID" />
+                <ScalarProperty Name="I_Type" ColumnName="I_Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Question">
+            <EntityTypeMapping TypeName="AQWDataModel.Question">
+              <MappingFragment StoreEntitySet="Question">
+                <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+                <ScalarProperty Name="Q_Content" ColumnName="Q_Content" />
+                <ScalarProperty Name="Q_Select_A" ColumnName="Q_Select_A" />
+                <ScalarProperty Name="Q_Select_B" ColumnName="Q_Select_B" />
+                <ScalarProperty Name="Q_Select_C" ColumnName="Q_Select_C" />
+                <ScalarProperty Name="Q_Select_D" ColumnName="Q_Select_D" />
+                <ScalarProperty Name="Q_Answer" ColumnName="Q_Answer" />
+                <ScalarProperty Name="Q_Add_Date" ColumnName="Q_Add_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="AQWDataModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleDesc" ColumnName="RoleDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_GroupNumber">
+            <EntityTypeMapping TypeName="AQWDataModel.S_GroupNumber">
+              <MappingFragment StoreEntitySet="S_GroupNumber">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Score">
+            <EntityTypeMapping TypeName="AQWDataModel.Score">
+              <MappingFragment StoreEntitySet="Score">
+                <ScalarProperty Name="ScoreID" ColumnName="ScoreID" />
+                <ScalarProperty Name="S_Correct" ColumnName="S_Correct" />
+                <ScalarProperty Name="S_Achieve_Date" ColumnName="S_Achieve_Date" />
+                <ScalarProperty Name="S_GroupID" ColumnName="S_GroupID" />
+                <ScalarProperty Name="S_UserID" ColumnName="S_UserID" />
+                <ScalarProperty Name="S_QID" ColumnName="S_QID" />
+                <ScalarProperty Name="S_Type" ColumnName="S_Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Score_Type">
+            <EntityTypeMapping TypeName="AQWDataModel.Score_Type">
+              <MappingFragment StoreEntitySet="Score_Type">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Desc" ColumnName="Desc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="AQWDataModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="AQWDataModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserNameHash" ColumnName="UserNameHash" />
+                <ScalarProperty Name="Passwords" ColumnName="Passwords" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LevelID" ColumnName="LevelID" />
+                <ScalarProperty Name="Max_score" ColumnName="Max_score" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="IsOnline" ColumnName="IsOnline" />
+                <ScalarProperty Name="Add_Date" ColumnName="Add_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserHasToolsNumber">
+            <EntityTypeMapping TypeName="AQWDataModel.UserHasToolsNumber">
+              <MappingFragment StoreEntitySet="UserHasToolsNumber">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ToolID" ColumnName="ToolID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ToolsNumber" ColumnName="ToolsNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

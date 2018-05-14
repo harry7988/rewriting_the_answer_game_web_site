@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7c9e2f0d7b7b4796adb353659116c2f7" Name="Diagram1">
+        <EntityTypeShape EntityType="AQWDataModel.AnswerTools" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AQWDataModel.IsOnline" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AQWDataModel.Level" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="AQWDataModel.LogInfo" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AQWDataModel.Question" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AQWDataModel.Role" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AQWDataModel.S_GroupNumber" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AQWDataModel.Score" Width="1.5" PointX="7.5" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AQWDataModel.Score_Type" Width="1.5" PointX="5.25" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AQWDataModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AQWDataModel.User" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="AQWDataModel.UserHasToolsNumber" Width="1.5" PointX="8.25" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="AQWDataModel.FK_UserHasToosNumber_AnswerTools" ManuallyRouted="false" />
+        <AssociationConnector Association="AQWDataModel.FK_User_IsOnline" ManuallyRouted="false" />
+        <AssociationConnector Association="AQWDataModel.FK_User_Level" ManuallyRouted="false" />
+        <AssociationConnector Association="AQWDataModel.FK_LogInfo_User" ManuallyRouted="false" />
+        <AssociationConnector Association="AQWDataModel.FK_Score_Question" ManuallyRouted="false" />
+        <AssociationConnector Association="AQWDataModel.FK_User_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="AQWDataModel.FK_S_GroupNumber_User" ManuallyRouted="false" />
+        <AssociationConnector Association="AQWDataModel.FK_Score_S_GroupNumber" ManuallyRouted="false" />
+        <AssociationConnector Association="AQWDataModel.FK_Score_Score_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="AQWDataModel.FK_Score_User" ManuallyRouted="false" />
+        <AssociationConnector Association="AQWDataModel.FK_UserHasToosNumber_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
